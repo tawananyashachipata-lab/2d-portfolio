@@ -160,7 +160,7 @@ function Index() {
 
       {/* Achievement toasts */}
       <div
-        className="pointer-events-none fixed bottom-4 right-4 z-50 flex w-72 flex-col gap-2"
+        className="pointer-events-none fixed inset-x-4 bottom-4 z-50 flex w-auto max-w-72 flex-col gap-2 sm:left-auto sm:right-4"
         aria-live="polite"
       >
         {game.toasts.map((t) => (
@@ -186,7 +186,7 @@ function Welcome(props: {
   onCv: () => void;
 }) {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-16">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-3 py-12 sm:px-4 sm:py-16">
       {/* animated starfield */}
       <div aria-hidden className="absolute inset-0">
         {Array.from({ length: 60 }).map((_, i) => (
@@ -205,7 +205,7 @@ function Welcome(props: {
         <div className="absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 flex max-w-2xl flex-col items-center text-center">
+      <div className="relative z-10 flex w-full max-w-2xl flex-col items-center text-center">
         {/* avatar: stylised developer emblem, not a fake photo */}
         <div className="animate-float-y panel-frame mb-8 grid h-28 w-28 place-items-center rounded-2xl">
           <span className="font-pixel text-2xl text-primary text-glow-cyan">TC</span>
@@ -214,7 +214,7 @@ function Welcome(props: {
         <p className="font-mono text-xs tracking-widest text-muted-foreground">
           welcome_to_my_universe
         </p>
-        <h1 className="font-pixel mt-4 text-xl leading-relaxed text-foreground sm:text-3xl">
+        <h1 className="font-pixel mt-4 text-base leading-relaxed text-foreground sm:text-3xl">
           TAWANANYASHA <span className="text-primary text-glow-cyan">CHIPATA</span>
         </h1>
         <p className="mt-3 text-lg font-semibold text-accent-foreground">Software Developer</p>
@@ -222,28 +222,28 @@ function Welcome(props: {
           {profile.tagline} {profile.intro}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-8 grid w-full grid-cols-1 items-center justify-center gap-3 min-[420px]:flex min-[420px]:flex-wrap sm:mt-10">
           <button
             onClick={props.onStart}
-            className="btn-quest rounded-lg px-6 py-4 text-xs sm:text-sm"
+            className="btn-quest min-h-12 rounded-lg px-4 py-3 text-xs sm:px-6 sm:py-4 sm:text-sm"
           >
             <Gamepad2 className="mr-2 inline h-4 w-4" /> Start Adventure
           </button>
           <button
             onClick={props.onProjects}
-            className="rounded-lg border border-accent px-5 py-4 text-sm font-semibold text-accent-foreground transition hover:bg-accent/20"
+            className="min-h-12 rounded-lg border border-accent px-4 py-3 text-sm font-semibold text-accent-foreground transition hover:bg-accent/20 sm:px-5 sm:py-4"
           >
             Explore My Projects
           </button>
           <button
             onClick={props.onProfile}
-            className="rounded-lg border border-border px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-secondary"
+            className="min-h-12 rounded-lg border border-border px-4 py-3 text-sm font-semibold text-foreground transition hover:bg-secondary sm:px-5 sm:py-4"
           >
             View My Profile
           </button>
           <button
             onClick={props.onCv}
-            className="rounded-lg border border-border px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-secondary"
+            className="min-h-12 rounded-lg border border-border px-4 py-3 text-sm font-semibold text-foreground transition hover:bg-secondary sm:px-5 sm:py-4"
           >
             <Download className="mr-2 inline h-4 w-4" /> Download My CV
           </button>
@@ -259,7 +259,7 @@ function Welcome(props: {
         <button
           type="button"
           onClick={props.onStart}
-          className="btn-quest mt-10 rounded-lg px-8 py-5 font-mono text-sm font-bold tracking-widest transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          className="btn-quest mt-8 min-h-12 max-w-full rounded-lg px-5 py-4 font-mono text-xs font-bold tracking-wide transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:mt-10 sm:px-8 sm:py-5 sm:text-sm sm:tracking-widest"
           aria-label="Press start to explore the portfolio"
         >
           ▶ PRESS START TO EXPLORE ▼
@@ -284,35 +284,40 @@ function Hud(props: {
   const explored = g.visited.length;
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3">
-        <span className="font-pixel text-[10px] text-primary">TC.UNIVERSE</span>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 items-center gap-x-2 gap-y-2 px-3 py-2 sm:flex sm:flex-wrap sm:gap-x-4 sm:gap-y-2 sm:px-4 sm:py-3">
+        <span className="font-pixel col-span-2 text-[10px] text-primary sm:col-span-1">
+          TC.UNIVERSE
+        </span>
 
-        <nav className="flex items-center gap-2" aria-label="View mode">
+        <nav
+          className="col-span-2 row-start-2 flex min-w-0 items-center gap-1 sm:order-none sm:gap-2"
+          aria-label="View mode"
+        >
           <button
             onClick={props.onMap}
             aria-pressed={props.mode === "map"}
-            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition ${
+            className={`flex min-h-10 min-w-0 flex-1 items-center justify-center gap-1 rounded-md px-2 py-1.5 text-[11px] font-semibold transition sm:flex-none sm:gap-1.5 sm:px-3 sm:text-xs ${
               props.mode === "map"
                 ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:bg-secondary"
             }`}
           >
-            <MapIcon className="h-3.5 w-3.5" /> World Map
+            <MapIcon className="h-3.5 w-3.5 shrink-0" /> World Map
           </button>
           <button
             onClick={props.onBrowse}
             aria-pressed={props.mode === "browse"}
-            className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition ${
+            className={`flex min-h-10 min-w-0 flex-1 items-center justify-center gap-1 rounded-md px-2 py-1.5 text-[11px] font-semibold transition sm:flex-none sm:gap-1.5 sm:px-3 sm:text-xs ${
               props.mode === "browse"
                 ? "bg-primary text-primary-foreground"
                 : "text-muted-foreground hover:bg-secondary"
             }`}
           >
-            <FileText className="h-3.5 w-3.5" /> Quick Browse
+            <FileText className="h-3.5 w-3.5 shrink-0" /> Quick Browse
           </button>
         </nav>
 
-        <div className="flex min-w-40 flex-1 items-center gap-2">
+        <div className="col-span-2 row-start-4 flex min-w-0 items-center gap-2 sm:order-none sm:min-w-40 sm:flex-1">
           <Zap className="h-4 w-4 shrink-0 text-gold" aria-hidden />
           <div
             className="h-2.5 flex-1 overflow-hidden rounded-full bg-muted"
@@ -327,16 +332,16 @@ function Hud(props: {
               style={{ width: `${g.levelProgress}%` }}
             />
           </div>
-          <span className="font-mono shrink-0 text-[11px] text-muted-foreground">
+          <span className="font-mono min-w-0 text-right text-[9px] leading-tight text-muted-foreground sm:shrink-0 sm:text-[11px]">
             LV{g.level} · {g.xp} XP · {explored}/6 zones
           </span>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="col-span-2 row-start-3 flex items-center justify-between gap-1 sm:order-none sm:justify-start sm:gap-1">
           <button
             onClick={g.toggleSound}
             aria-label={g.soundOn ? "Mute sound" : "Unmute sound"}
-            className="rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+            className="min-h-10 min-w-10 rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
             {g.soundOn ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
           </button>
@@ -344,7 +349,7 @@ function Hud(props: {
             onClick={props.onToggleMotion}
             aria-pressed={props.reduceMotion}
             aria-label="Toggle reduced motion"
-            className={`rounded-md p-2 text-xs font-semibold transition hover:bg-secondary ${
+            className={`min-h-10 rounded-md px-2 text-xs font-semibold transition hover:bg-secondary sm:p-2 ${
               props.reduceMotion ? "text-cyber" : "text-muted-foreground"
             }`}
           >
@@ -353,13 +358,13 @@ function Hud(props: {
           <button
             onClick={g.resetProgress}
             aria-label="Reset exploration progress"
-            className="rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+            className="min-h-10 min-w-10 rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
             <RotateCcw className="h-4 w-4" />
           </button>
           <button
             onClick={props.onCv}
-            className="ml-1 flex items-center gap-1.5 rounded-md border border-primary px-3 py-1.5 text-xs font-semibold text-primary transition hover:bg-primary/10"
+            className="ml-0.5 flex min-h-10 items-center gap-1 rounded-md border border-primary px-2 py-1.5 text-xs font-semibold text-primary transition hover:bg-primary/10 sm:ml-1 sm:gap-1.5 sm:px-3"
           >
             <Download className="h-3.5 w-3.5" /> CV
           </button>
@@ -403,7 +408,7 @@ function ZoneMap({ visited, onOpen }: { visited: LocationId[]; onOpen: (id: Loca
 
   return (
     <main className="relative mx-auto max-w-5xl px-4 py-10">
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-1/3 top-0 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
       </div>
@@ -415,7 +420,7 @@ function ZoneMap({ visited, onOpen }: { visited: LocationId[]; onOpen: (id: Loca
         Click or tap a zone, or use arrow keys + Enter (keys 1–6 jump directly).
       </p>
 
-      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6" role="list">
+      <div className="mt-8 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:mt-10 sm:grid-cols-3 sm:gap-6" role="list">
         {locations.map((loc, i) => {
           const seen = visited.includes(loc.id);
           return (
@@ -427,7 +432,7 @@ function ZoneMap({ visited, onOpen }: { visited: LocationId[]; onOpen: (id: Loca
               role="listitem"
               onClick={() => onOpen(loc.id)}
               onFocus={() => setFocus(i)}
-              className="panel-frame group relative flex flex-col items-center gap-3 rounded-xl p-6 text-center transition hover:-translate-y-1 hover:border-primary"
+              className="panel-frame group relative flex min-w-0 flex-col items-center gap-3 rounded-xl p-4 text-center transition hover:-translate-y-1 hover:border-primary sm:p-6"
               style={{ boxShadow: seen ? `0 0 24px -6px ${ZONE_COLORS[loc.id]}55` : undefined }}
             >
               <span
@@ -480,7 +485,7 @@ function ZoneDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-3 backdrop-blur-sm sm:p-4"
       role="dialog"
       aria-modal="true"
       aria-label={loc.name}
@@ -488,7 +493,7 @@ function ZoneDialog({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="panel-frame animate-toast-in max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-xl p-6">
+      <div className="panel-frame animate-toast-in max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl overscroll-contain overflow-y-auto rounded-xl p-4 sm:max-h-[85vh] sm:p-6">
         <div className="mb-4 flex items-start justify-between gap-4">
           <div>
             <h3 className="font-pixel text-xs sm:text-sm" style={{ color: ZONE_COLORS[zone] }}>
@@ -696,7 +701,7 @@ function ProjectsSection() {
         {visible.map((p, i) => (
           <article
             key={p.title}
-            className="panel-frame flex flex-col rounded-xl p-5 transition hover:-translate-y-1 hover:border-primary"
+            className="panel-frame flex min-w-0 flex-col rounded-xl p-4 transition hover:-translate-y-1 hover:border-primary sm:p-5"
           >
             <div className="mb-3 overflow-hidden rounded-lg border border-border bg-secondary">
               <img
@@ -706,7 +711,7 @@ function ProjectsSection() {
               />
             </div>
             <div className="flex items-center justify-between gap-2">
-              <h4 className="text-base font-bold">{p.title}</h4>
+              <h4 className="min-w-0 break-words text-base font-bold">{p.title}</h4>
               <span
                 className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${p.status === "Live" ? "bg-cyber/15 text-cyber" : "bg-gold/15 text-gold"}`}
               >
@@ -761,7 +766,7 @@ function ProjectsSection() {
 
       {detail && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-background/80 p-3 backdrop-blur-sm sm:p-4"
           role="dialog"
           aria-modal="true"
           aria-label={`${detail.title} details`}
@@ -769,7 +774,7 @@ function ProjectsSection() {
             if (e.target === e.currentTarget) setDetail(null);
           }}
         >
-          <div className="panel-frame max-h-[80vh] w-full max-w-lg overflow-y-auto rounded-xl p-6">
+          <div className="panel-frame max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overscroll-contain overflow-y-auto rounded-xl p-4 sm:max-h-[80vh] sm:p-6">
             <div className="flex items-start justify-between gap-3">
               <h4 className="text-lg font-bold">{detail.title}</h4>
               <button
@@ -927,7 +932,7 @@ function ContactSection() {
     "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary";
 
   return (
-    <div className="grid gap-8 sm:grid-cols-2">
+    <div className="grid min-w-0 gap-6 sm:grid-cols-2 sm:gap-8">
       <div>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Have a project, opportunity, or idea? Let's connect and build something useful.
@@ -936,9 +941,9 @@ function ContactSection() {
           <li>
             <a
               href={`mailto:${profile.email}`}
-              className="flex items-center gap-2 text-foreground transition hover:text-primary"
+              className="flex min-w-0 items-start gap-2 text-foreground transition hover:text-primary"
             >
-              <Mail className="h-4 w-4 text-primary" /> {profile.email}
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> <span className="min-w-0 break-all">{profile.email}</span>
             </a>
           </li>
           <li>
@@ -946,9 +951,9 @@ function ContactSection() {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-foreground transition hover:text-primary"
+              className="flex min-w-0 items-start gap-2 text-foreground transition hover:text-primary"
             >
-              <Github className="h-4 w-4 text-primary" /> github.com/tawananyashachipata-lab
+              <Github className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> <span className="min-w-0 break-all">github.com/tawananyashachipata-lab</span>
             </a>
           </li>
           <li>
@@ -956,10 +961,10 @@ function ContactSection() {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-foreground transition hover:text-primary"
+              className="flex min-w-0 items-start gap-2 text-foreground transition hover:text-primary"
             >
-              <Linkedin className="h-4 w-4 text-primary" />{" "}
-              https://www.linkedin.com/in/tawananyasha-chipata
+              <Linkedin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{" "}
+              <span className="min-w-0 break-all">linkedin.com/in/tawananyasha-chipata</span>
             </a>
           </li>
           <li>
@@ -967,9 +972,9 @@ function ContactSection() {
               href={profile.portfolio}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-foreground transition hover:text-primary"
+              className="flex min-w-0 items-start gap-2 text-foreground transition hover:text-primary"
             >
-              <ExternalLink className="h-4 w-4 text-primary" /> magadaline.vercel.app
+              <ExternalLink className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> <span className="min-w-0 break-all">magadaline.vercel.app</span>
             </a>
           </li>
         </ul>
@@ -1047,7 +1052,7 @@ function BrowseAll({ onCv }: { onCv: () => void }) {
     <main className="mx-auto max-w-4xl px-4 pb-24">
       <nav
         aria-label="Section shortcuts"
-        className="sticky top-[57px] z-30 -mx-4 mb-8 flex gap-1 overflow-x-auto border-b border-border bg-background/90 px-4 py-2 backdrop-blur"
+        className="sticky top-[154px] z-30 -mx-3 mb-6 flex gap-1 overflow-x-auto border-b border-border bg-background/90 px-3 py-2 backdrop-blur sm:top-[57px] sm:-mx-4 sm:mb-8 sm:px-4"
       >
         {sections.map((s) => {
           const loc = locations.find((l) => l.id === s.id)!;
@@ -1055,7 +1060,7 @@ function BrowseAll({ onCv }: { onCv: () => void }) {
             <a
               key={s.id}
               href={`#${s.anchor}`}
-              className="whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-semibold text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+              className="min-h-10 whitespace-nowrap rounded-md px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:bg-secondary hover:text-foreground"
             >
               {loc.name}
             </a>

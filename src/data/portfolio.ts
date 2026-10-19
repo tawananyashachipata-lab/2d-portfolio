@@ -250,22 +250,6 @@ const CERT_BASE = "https://magadaline.vercel.app/assets";
 
 export const certificates: Certificate[] = [
   {
-    title: "UX Design",
-    description: "Certificate details will be added once the original certificate is uploaded.",
-    status: "upcoming",
-  },
-  {
-    title: "Product Designer",
-    description: "Certificate details will be added once the original certificate is uploaded.",
-    status: "upcoming",
-  },
-  {
-    title: "HP LIFE — Introduction to Digital Business Skills",
-    issuer: "HP LIFE",
-    description: "Certificate details will be added once the original certificate is uploaded.",
-    status: "upcoming",
-  },
-  {
     title: "Python",
     issuer: "freeCodeCamp",
     year: "2026",
