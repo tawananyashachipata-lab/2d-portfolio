@@ -6,8 +6,11 @@ import {
   ExternalLink,
   FileText,
   Gamepad2,
+<<<<<<< HEAD
   Gift,
   Coins,
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
   Github,
   Linkedin,
   Mail,
@@ -15,6 +18,10 @@ import {
   RotateCcw,
   Send,
   Sparkles,
+<<<<<<< HEAD
+=======
+  User,
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
   Volume2,
   VolumeX,
   X,
@@ -32,7 +39,10 @@ import {
   type LocationId,
   type Project,
 } from "@/data/portfolio";
+<<<<<<< HEAD
 import profilePhoto from "@/assets/Tawana_profile.jpeg";
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
 import { useGameProgress } from "@/game/useGameProgress";
 import { sounds } from "@/lib/sounds";
 
@@ -83,7 +93,10 @@ function Index() {
   const [mode, setMode] = useState<Mode>("welcome");
   const [openZone, setOpenZone] = useState<LocationId | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
+<<<<<<< HEAD
   const [arcadeOpen, setArcadeOpen] = useState(false);
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
 
   useEffect(() => {
     document.documentElement.classList.toggle("reduce-motion", reduceMotion);
@@ -135,7 +148,10 @@ function Index() {
         <>
           <Hud
             game={game}
+<<<<<<< HEAD
             onArcade={() => setArcadeOpen(true)}
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
             mode={mode}
             onMap={() => setMode("map")}
             onBrowse={() => setMode("browse")}
@@ -151,8 +167,11 @@ function Index() {
         </>
       )}
 
+<<<<<<< HEAD
       {arcadeOpen && <Arcade game={game} onClose={() => setArcadeOpen(false)} />}
 
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
       {openZone && (
         <ZoneDialog
           zone={openZone}
@@ -182,6 +201,7 @@ function Index() {
   );
 }
 
+<<<<<<< HEAD
 /* ------------------------- Optional XP Arcade ------------------------- */
 type ArcadeGame = "wheel" | "chest" | "quiz";
 
@@ -412,6 +432,8 @@ function Arcade({
   );
 }
 
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
 /* ------------------------------ Welcome ------------------------------ */
 
 function Welcome(props: {
@@ -463,7 +485,11 @@ function Welcome(props: {
             onClick={props.onStart}
             className="btn-quest min-h-12 rounded-lg px-4 py-3 text-xs sm:px-6 sm:py-4 sm:text-sm"
           >
+<<<<<<< HEAD
             <Gamepad2 className="mr-2 inline h-4 w-4" /> Play & Earn XP
+=======
+            <Gamepad2 className="mr-2 inline h-4 w-4" /> Start Adventure
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
           </button>
           <button
             onClick={props.onProjects}
@@ -489,7 +515,11 @@ function Welcome(props: {
           onClick={props.onBrowse}
           className="mt-8 text-sm text-muted-foreground underline decoration-dotted underline-offset-4 transition hover:text-primary"
         >
+<<<<<<< HEAD
           No games, please — browse the portfolio normally
+=======
+          Skip the game and browse everything directly
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
         </button>
 
         <button
@@ -509,7 +539,10 @@ function Welcome(props: {
 
 function Hud(props: {
   game: ReturnType<typeof useGameProgress>;
+<<<<<<< HEAD
   onArcade: () => void;
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
   mode: Mode;
   onMap: () => void;
   onBrowse: () => void;
@@ -575,9 +608,12 @@ function Hud(props: {
         </div>
 
         <div className="col-span-2 row-start-3 flex items-center justify-between gap-1 sm:order-none sm:justify-start sm:gap-1">
+<<<<<<< HEAD
           <button onClick={props.onArcade} className="flex min-h-10 items-center gap-1 rounded-md border border-gold/50 px-2 text-xs font-semibold text-gold hover:bg-secondary" aria-label="Open optional XP rewards arcade">
             <Gift className="h-4 w-4" /> Arcade · {g.availableXp} XP
           </button>
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
           <button
             onClick={g.toggleSound}
             aria-label={g.soundOn ? "Mute sound" : "Unmute sound"}
@@ -597,7 +633,11 @@ function Hud(props: {
           </button>
           <button
             onClick={g.resetProgress}
+<<<<<<< HEAD
             aria-label="Reset visited zones"
+=======
+            aria-label="Reset exploration progress"
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
             className="min-h-10 min-w-10 rounded-md p-2 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
           >
             <RotateCcw className="h-4 w-4" />
@@ -623,12 +663,15 @@ function ZoneMap({ visited, onOpen }: { visited: LocationId[]; onOpen: (id: Loca
   // Keyboard navigation across the zone grid (arrows + Enter), plus number keys.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+<<<<<<< HEAD
       if (
         e.target instanceof HTMLElement &&
         (e.target.isContentEditable || e.target.closest("input, textarea, select"))
       )
         return;
 
+=======
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
       const cols = 3;
       let next = focus;
       if (e.key === "ArrowRight") next = (focus + 1) % locations.length;
@@ -785,11 +828,18 @@ function ProfileSection({ onCv }: { onCv: () => void }) {
   return (
     <div className="space-y-5">
       <div className="flex flex-col items-start gap-4 sm:flex-row">
+<<<<<<< HEAD
         <img
           src={profilePhoto}
           alt={`${profile.name} working at a laptop`}
           className="panel-frame h-24 w-24 shrink-0 rounded-xl object-cover object-[center_35%]"
         />
+=======
+        {/* Replace this emblem with a real photo when ready */}
+        <div className="panel-frame grid h-24 w-24 shrink-0 place-items-center rounded-xl">
+          <User className="h-10 w-10 text-primary" aria-label="Profile image placeholder" />
+        </div>
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
         <div>
           <h4 className="text-xl font-bold">{profile.name}</h4>
           <p className="text-sm text-primary">
@@ -1144,7 +1194,11 @@ function ContactSection() {
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+<<<<<<< HEAD
   const [status, setStatus] = useState<"idle" | "error" | "sent" | "sending" | "unconfigured">("idle");
+=======
+  const [status, setStatus] = useState<"idle" | "error" | "sent">("idle");
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -1160,13 +1214,19 @@ function ContactSection() {
     return Object.keys(e).length === 0;
   };
 
+<<<<<<< HEAD
   const submit = async (ev: React.FormEvent) => {
     ev.preventDefault();
     if (status === "sending") return;
+=======
+  const submit = (ev: React.FormEvent) => {
+    ev.preventDefault();
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
     if (!validate()) {
       setStatus("error");
       return;
     }
+<<<<<<< HEAD
     const formId = import.meta.env.VITE_FORMSPREE_FORM_ID?.trim();
     if (!formId || !/^[a-zA-Z0-9]+$/.test(formId)) {
       setStatus("unconfigured");
@@ -1193,6 +1253,15 @@ function ContactSection() {
       setStatus("error");
       setErrors({ submit: "Message could not be sent. Please try again or use the email link." });
     }
+=======
+    // No backend is connected yet: open the visitor's email client with a
+    // prefilled message instead of pretending the message was sent.
+    const body = encodeURIComponent(
+      `From: ${form["name"].trim()} <${form["email"].trim()}>\n\n${form["message"].trim()}`,
+    );
+    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(form["subject"].trim())}&body=${body}`;
+    setStatus("sent");
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
   };
 
   const field =
@@ -1257,7 +1326,11 @@ function ContactSection() {
               id={`cf-${f}`}
               type={f === "email" ? "email" : "text"}
               value={form[f]}
+<<<<<<< HEAD
               onChange={(e) => { setForm((current) => ({ ...current, [f]: e.target.value })); if (status !== "sending") setStatus("idle"); }}
+=======
+              onChange={(e) => setForm((current) => ({ ...current, [f]: e.target.value }))}
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
               className={field}
               aria-invalid={Boolean(errors[f])}
               aria-describedby={errors[f] ? `cf-${f}-err` : undefined}
@@ -1277,7 +1350,11 @@ function ContactSection() {
             id="cf-message"
             rows={4}
             value={form["message"]}
+<<<<<<< HEAD
             onChange={(e) => { setForm((current) => ({ ...current, message: e.target.value })); if (status !== "sending") setStatus("idle"); }}
+=======
+            onChange={(e) => setForm((current) => ({ ...current, message: e.target.value }))}
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
             className={field}
             aria-invalid={Boolean(errors["message"])}
             aria-describedby={errors["message"] ? "cf-message-err" : undefined}
@@ -1290,6 +1367,7 @@ function ContactSection() {
         </div>
         <button
           type="submit"
+<<<<<<< HEAD
           disabled={status === "sending"}
           className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
         >
@@ -1303,6 +1381,16 @@ function ContactSection() {
               : status === "unconfigured"
                 ? "Contact form setup is incomplete. The site owner needs to add a Formspree form ID. You can use the email link instead."
                 : errors.submit || "Send a message directly here without opening your email app."}
+=======
+          className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
+        >
+          <Send className="h-4 w-4" /> Send Message
+        </button>
+        <p className="text-xs text-muted-foreground">
+          {status === "sent"
+            ? "Your email app should have opened with the message prefilled — press send there to deliver it."
+            : "This form opens your email app with the message prefilled. A direct send service can be connected later."}
+>>>>>>> 7788d290869e58ac99cbb6963c477bd62f9436bf
         </p>
       </form>
     </div>
